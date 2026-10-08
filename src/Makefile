@@ -31,19 +31,14 @@ PLATFORM              ?= PLATFORM_DESKTOP
 # Define project variables
 PROJECT_NAME          ?= raylib_game
 PROJECT_VERSION       ?= 1.0
-PROJECT_BUILD_PATH    ?= .
+PROJECT_BUILD_PATH    ?= .././build
 PROJECT_SOURCE_FILES  ?= \
-    raylib_game.c \
-    screen_logo.c \
-    screen_title.c \
-    screen_options.c \
-    screen_gameplay.c \
-    screen_ending.c
+    main.c 
 
 # raylib library variables
-RAYLIB_PATH           ?= C:\raylib\raylib
-RAYLIB_INCLUDE_PATH   ?= $(RAYLIB_PATH)/src
-RAYLIB_LIB_PATH       ?= $(RAYLIB_PATH)/src
+RAYLIB_PATH           ?= $(shell brew --prefix raylib)
+RAYLIB_INCLUDE_PATH   ?= $(RAYLIB_PATH)/include
+RAYLIB_LIB_PATH       ?= $(RAYLIB_PATH)/lib
 # Library type used for raylib: STATIC (.a) or SHARED (.so/.dll)
 RAYLIB_LIBTYPE        ?= STATIC
 
@@ -156,7 +151,7 @@ endif
 #  -Wno-missing-braces  ignore invalid warning (GCC bug 53119)
 #  -Wno-unused-value    ignore unused return values of some functions (i.e. fread())
 #  -D_DEFAULT_SOURCE    use with -std=c99 on Linux and PLATFORM_WEB, required for timespec
-CFLAGS = -Wall -D_DEFAULT_SOURCE -Wno-missing-braces -Wno-unused-value -Wno-unused-result -Wno-pointer-sign $(PROJECT_CUSTOM_FLAGS)
+CFLAGS = -Wall -Werror -D_DEFAULT_SOURCE -Wno-missing-braces -Wno-unused-value -Wno-unused-result -Wno-pointer-sign $(PROJECT_CUSTOM_FLAGS)
 #CFLAGS += -Wextra -Wmissing-prototypes -Wstrict-prototypes
 
 ifeq ($(PLATFORM),PLATFORM_WEB)
