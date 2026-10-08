@@ -33,7 +33,11 @@ PROJECT_NAME          ?= raylib_game
 PROJECT_VERSION       ?= 1.0
 PROJECT_BUILD_PATH    ?= .././build
 PROJECT_SOURCE_FILES  ?= \
-    main.c 
+    main.c \
+    helpers.c \
+    node.c \
+    line.c \
+    graphics.c
 
 # raylib library variables
 RAYLIB_PATH           ?= $(shell brew --prefix raylib)
